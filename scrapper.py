@@ -35,10 +35,15 @@ def get_names():
 		for h2 in html.select('h2'):
 			#print(h2.text)
 			if len(h2.text) > 0:
-				names.add(h2.text)
+				temp = h2.text.split("–")
+				temp = str(temp[0]).split()
+				temp = " ".join(temp[1:])
+				names.add(temp)
 		return list(names)
 
 	raise Exception('Error retrieving contents at {}'.format(url))
 
+
+
 names = get_names()
-print(names.sort())
+print(names)
